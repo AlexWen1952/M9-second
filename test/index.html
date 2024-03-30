@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <div class="container">
+        <form id="registration-form">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <span class="error" id="name-error"></span>
+            </div>
+            <div>
+                <label for="year-of-birth">Year of Birth:</label>
+                <input type="number" id="year-of-birth" name="year-of-birth">
+                <span class="error" id="year-of-birth-error"></span>
+            </div>
+            <div>
+                <input type="checkbox" id="us-resident" name="us-resident">
+                <label for="us-resident">Do you live in the United States?</label>
+            </div>
+            <div id="zipcode-group">
+                <label for="zipcode">Zipcode:</label>
+                <input type="text" id="zipcode" name="zipcode">
+                <span class="error" id="zipcode-error"></span>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <span class="error" id="password-error"></span>
+            </div>
+            <div>
+                <label for="pizza">Preferred type of pizza:</label>
+                <select id="pizza" name="pizza">
+                    <option value="">Please select</option>
+                    <option value="pineapple">With pineapple</option>
+                    <option value="nopineapple">Without pineapple</option>
+                    <option value="no-pizza">I do not like pizza</option>
+                </select>
+                <span class="error" id="pizza-error"></span>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>    
+    </div>
+    <div id="success-message"></div>
+    <div id="error-message"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+

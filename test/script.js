@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Validate year of birth
-        if (!(yearOfBirthInput.value > 1900 && yearOfBirthInput.value <= 2099)) {
+        if (!(yearOfBirthInput.value > 1900 && yearOfBirthInput.value < 2100)) {
             document.getElementById("year-of-birth-error").textContent = "Year of birth must be between 1900 and 2099.";
             isValid = false;
         } else {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (usResidentCheckbox.checked) {
             // Validate zipcode if the user is a US resident
-            if (!(zipcodeInput.value >= 10000 && zipcodeInput.value <= 99999)) {
+            if (!(isValidZipCode(zipcodeInput.value))) {
                 document.getElementById("zipcode-error").textContent = "Zipcode must be a 5-digit number.";
                 isValid = false;
             } else {
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("zipcode-error").textContent = "";
 
             if (zipcodeInput.value !== "") {
-                if (!(zipcodeInput.value >= 10000 && zipcodeInput.value <= 99999)) {
+                if (!(isValidZipCode(zipcodeInput.value))) {
                     document.getElementById("zipcode-error").textContent = "Zipcode must be a 5-digit number.";
                     isValid = false;
                 } else {
@@ -75,18 +75,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-// document.addEventListener("DOMContentLoaded", function() {
-//     var usResidentCheckbox = document.getElementById("us-resident");
-//     var zipcodeInput = document.getElementById("zipcode");
-//     var zipcodeError = document.getElementById("zipcode-error");
 
-//     usResidentCheckbox.addEventListener("change", function() {
-//         if (usResidentCheckbox.checked) {
-//             zipcodeInput.disabled = false;
-//         } else {
-//             zipcodeInput.disabled = true;
-//             zipcodeInput.value = ""; // Clear the zipcode input value
-//             zipcodeError.textContent = ""; // Clear the error message
-//         }
-//     });
-// });
+function isValidZipCode(zip) {    
+    // Regular expression to match 5-digit ZIP code
+    var zipRegex = /^\d{5}$/;
+    
+    // Test if the string matches the regular expression pattern
+    return zipRegex.test(zip);
+}
